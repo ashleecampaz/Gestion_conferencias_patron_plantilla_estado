@@ -16,6 +16,7 @@ public class Conference {
     private int num_papers; 
     private int max_papers;
     private double min_paper_score;
+    
     private EvaluatorsAssignmentMethod assignmentMethod;
     private List<Evaluator> evaluators; 
     private List<Paper> papers; 
@@ -28,7 +29,7 @@ public class Conference {
         this.max_papers = max_papers;
         this.min_paper_score = min_paper_score;
         this.assignmentMethod = assignmentMethod; 
-    }
+   }
 
     public int getNum_pappers() {
         return num_papers;
@@ -88,6 +89,14 @@ public class Conference {
             for(Evaluator e:asignacion.get(p)){
                 e.addPaperToReview(p);
             }
+        }
+        
+        for(Paper p:papers){
+            System.out.println("---------------------------------------------------------\n");
+            System.out.println(p);
+            System.out.println("Autor:" + p.getAuthor());
+            System.out.println(p.getEvaluators());
+            System.out.println("---------------------------------------------------------\n");
         }
         
     }

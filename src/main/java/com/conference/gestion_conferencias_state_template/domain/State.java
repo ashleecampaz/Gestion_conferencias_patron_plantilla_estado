@@ -20,6 +20,11 @@ public abstract class State {
         return name;
     }
 
+    @Override
+    public String toString() {
+        return "State{" + "name=" + name + '}';
+    }
+
     
     
 }

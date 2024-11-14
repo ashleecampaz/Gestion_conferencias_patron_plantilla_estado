@@ -14,16 +14,27 @@ public class Author {
     
     private final String name;
     private final String lastName; 
-    private final String email; 
+    private final String email;
+    private final String organization; 
     private List<Paper> papers; 
 
+    public Author(String name, String lastName, String email, String organization) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.papers = new ArrayList(); 
+        this.organization = organization; 
+    }
+    
     public Author(String name, String lastName, String email) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.papers = new ArrayList(); 
+        this.organization = "none"; 
     }
-
+    //public Author(){}
+    
     public String getName() {
         return name;
     }
@@ -41,8 +52,8 @@ public class Author {
     }
     
     public boolean addPaper(Paper p){
+        p.setAuthor(this);
         papers.add(p);
-        //Un autor no debe tener dos papers con el mismo nombre 
         return true;
     }
     
@@ -50,4 +61,14 @@ public class Author {
         boolean result = c.receivePaper(p);
         return result;
     }
+
+    public String getOrganization() {
+        return organization;
+    }
+
+    @Override
+    public String toString() {
+        return "Author{" + "name=" + name + ", lastName=" + lastName + ", email=" + email + ", organization=" + organization + '}';
+    }
+    
 }

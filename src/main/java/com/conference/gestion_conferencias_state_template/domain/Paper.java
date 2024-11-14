@@ -19,14 +19,15 @@ public class Paper {
     private List<String> keywords; 
     private State state; 
     private List<Evaluator> evaluators; 
-
+    private Author author; 
+    
     public Paper(String name, String description, List<String> keywords) {
         this.name = name;
         this.description = description;
         this.keywords = keywords;
-        this.keywords = new ArrayList(); 
-        this.evaluators = new ArrayList(); 
+        this.evaluators = new ArrayList();
         this.state = new Sent(); 
+        //this.author = new Author();
     }
 
     public Paper(String name) {
@@ -34,6 +35,7 @@ public class Paper {
         this.keywords = new ArrayList(); 
         this.evaluators = new ArrayList(); 
         this.state = new Sent(); 
+        //this.author = new Author();
     }
 
     public String getName() {
@@ -74,6 +76,23 @@ public class Paper {
 
     public void setEvaluators(List<Evaluator> evaluators) {
         this.evaluators = evaluators;
+    }
+
+    public List<Evaluator> getEvaluators() {
+        return evaluators;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
+
+    @Override
+    public String toString() {
+        return "Paper{" + "name=" + name + ", keywords=" + keywords + ", state=" + state + '}';
     }
     
     

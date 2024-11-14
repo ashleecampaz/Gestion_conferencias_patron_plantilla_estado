@@ -16,14 +16,25 @@ public class Evaluator {
     private final String lastName; 
     private final String email; 
     private final List<String> research_fields;
+    private final String organization;
     private List<Paper> papers_to_review; 
 
+    public Evaluator(String name, String lastName, String email, List<String> research_fields, String organization) {
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.papers_to_review = new ArrayList(); 
+        this.research_fields = research_fields; 
+        this.organization = organization; 
+    }
+    
     public Evaluator(String name, String lastName, String email, List<String> research_fields) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.papers_to_review = new ArrayList(); 
         this.research_fields = research_fields; 
+        this.organization = "none"; 
     }
 
     public String getName() {
@@ -52,6 +63,18 @@ public class Evaluator {
     public List<String> getResearch_fields() {
         return research_fields;
     }
+
+    public String getOrganization() {
+        return organization;
+    }
     
+    public void evaluate(Paper p){
+        p.goToNextState();
+    }
+
+    @Override
+    public String toString() {
+        return "Evaluator{" + "name=" + name + ", lastName=" + lastName + ", email=" + email + ", research_fields=" + research_fields + ", organization=" + organization + '}';
+    }
     
 }

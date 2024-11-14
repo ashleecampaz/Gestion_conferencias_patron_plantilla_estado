@@ -20,11 +20,16 @@ public abstract class EvaluatorsAssignmentMethod {
         Map<Paper,List<Evaluator>> afines = AffinityAssignment(papers,evaluators);
         Map<Paper,List<Evaluator>> balanceados = afines;
         
-        while(!balanced(balanceados)){
-            balanceados = balanceAssignment(balanceados); 
-        }
+        
+        balanceados = balanceAssignment(balanceados); 
+        
         
         Map<Paper,List<Evaluator>> conflitsSolved = solveConflits(balanceados);
+        
+         System.out.println("Paper y evaluadores");
+        
+        
+        
         
         return conflitsSolved;
     }
@@ -36,7 +41,7 @@ public abstract class EvaluatorsAssignmentMethod {
        for(Paper p:papers){
            evaluadores_afines = new ArrayList(); 
            for(Evaluator e:evaluators){
-               if(TheresAffinity(p.getKeywords(),e.getResearch_fields())){
+               if(TheresAffinity(p.getKeywords(),e.getResearch_fields()) && !theresConflict(p,e)){
                    evaluadores_afines.add(e);
                }
            }
@@ -58,5 +63,7 @@ public abstract class EvaluatorsAssignmentMethod {
    
    protected abstract Map<Paper,List<Evaluator>> balanceAssignment(Map<Paper,List<Evaluator>> b); 
    protected abstract boolean balanced(Map<Paper,List<Evaluator>> b);
+   protected abstract boolean theresConflict(Paper p, Evaluator e); 
+   
    protected abstract Map<Paper,List<Evaluator>> solveConflits ( Map<Paper,List<Evaluator>> balanced); 
 }
