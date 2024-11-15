@@ -20,18 +20,9 @@ public abstract class EvaluatorsAssignmentMethod {
         Map<Paper,List<Evaluator>> afines = AffinityAssignment(papers,evaluators);
         Map<Paper,List<Evaluator>> balanceados = afines;
         
-        
         balanceados = balanceAssignment(balanceados); 
-        
-        
-        Map<Paper,List<Evaluator>> conflitsSolved = solveConflits(balanceados);
-        
-         System.out.println("Paper y evaluadores");
-        
-        
-        
-        
-        return conflitsSolved;
+
+        return balanceados;
     }
     
    protected Map<Paper,List<Evaluator>> AffinityAssignment (List<Paper> papers, List<Evaluator> evaluators) {
@@ -64,6 +55,4 @@ public abstract class EvaluatorsAssignmentMethod {
    protected abstract Map<Paper,List<Evaluator>> balanceAssignment(Map<Paper,List<Evaluator>> b); 
    protected abstract boolean balanced(Map<Paper,List<Evaluator>> b);
    protected abstract boolean theresConflict(Paper p, Evaluator e); 
-   
-   protected abstract Map<Paper,List<Evaluator>> solveConflits ( Map<Paper,List<Evaluator>> balanced); 
 }

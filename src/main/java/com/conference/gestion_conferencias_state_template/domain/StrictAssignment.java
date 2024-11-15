@@ -55,10 +55,6 @@ public class StrictAssignment extends EvaluatorsAssignmentMethod {
         return balanced;
     }
 
-    @Override
-    protected Map<Paper, List<Evaluator>> solveConflits(Map<Paper, List<Evaluator>> balanced) {
-        return balanced;
-    }
 
     @Override
     protected boolean theresConflict(Paper p, Evaluator e) {
